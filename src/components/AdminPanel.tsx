@@ -133,7 +133,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
             {isAuthenticated ? 'Admin Panel' : 'Admin Access'}
           </DialogTitle>
           <DialogDescription className="text-gray-300">
-            Enter the admin password to view and download the waitlist.
+            Enter the admin password.
           </DialogDescription>
         </DialogHeader>
 
