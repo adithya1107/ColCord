@@ -15,8 +15,6 @@ interface WaitlistFormProps {
 export const WaitlistForm: React.FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
-    organization: '',
-    purpose: '',
     email: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,8 +30,6 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ isOpen, onClose }) =
         .from('waitlist')
         .insert([{
           name: formData.name,
-          organization: formData.organization,
-          purpose: formData.purpose,
           email: formData.email
         }]);
 
@@ -42,15 +38,14 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ isOpen, onClose }) =
       }
 
       toast({
-        title: "Success!",
-        description: "You've been added to our waitlist. We'll be in touch soon!",
+        title: "You're on the list! 🎉",
+        description: "Thanks for joining our waitlist. We'll keep you posted with updates soon!",
       });
+
 
       // Reset form
       setFormData({
         name: '',
-        organization: '',
-        purpose: '',
         email: ''
       });
 
