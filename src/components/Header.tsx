@@ -61,7 +61,7 @@ export const Header = () => {
               >
                 Join Waitlist
               </Button>
-              <Button
+              {/* <Button
                 onClick={() => setIsAdminOpen(true)}
                 variant="ghost"
                 size="icon"
@@ -69,7 +69,7 @@ export const Header = () => {
                 title="Admin Panel"
               >
                 <Lock className="h-5 w-5" />
-              </Button>
+              </Button> */}
             </div>
 
             {/* Mobile menu button */}
@@ -114,7 +114,7 @@ export const Header = () => {
                   >
                     Join the Waitlist
                   </Button>
-                  <Button
+                  {/* <Button
                     onClick={() => {
                       setIsAdminOpen(true);
                       setIsMenuOpen(false);
@@ -124,7 +124,7 @@ export const Header = () => {
                   >
                     <Lock className="h-4 w-4" />
                     Admin Panel
-                  </Button>
+                  </Button> */}
                 </div>
               </nav>
             </div>
@@ -137,10 +137,10 @@ export const Header = () => {
         isOpen={isWaitlistOpen} 
         onClose={() => setIsWaitlistOpen(false)} 
       />
-      <AdminPanel 
+      {/* <AdminPanel 
         isOpen={isAdminOpen} 
         onClose={() => setIsAdminOpen(false)} 
-      />
+      /> */}
     </>
   );
 };

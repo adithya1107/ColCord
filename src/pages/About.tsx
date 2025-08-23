@@ -67,7 +67,7 @@ export const About = () => {
     },
     {
       name: 'Shreya',
-      role: 'Marketing Lead',
+      role: 'CMO',
       image: '/shreya.png',
       linkedin: 'https://www.linkedin.com/in/shreya-joshi-b4113b245/',
       description: 'Crafting compelling narratives and strategies to connect Colcord with university communities and drive engagement.'

@@ -149,7 +149,7 @@ export const Home = () => {
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </Button>
                     <a 
-                      href="mailto:team@colcord.co.in?subject=Demo Request&body=Hi, I would like to request a demo of Colcord."
+                      href="https://prototype-nu-indol.vercel.app" target='_blank' rel='noreferrer'
                       className="border border-white/20 text-palette-white px-8 py-4 text-sm font-medium hover:bg-white/5 transition-all duration-300 flex items-center justify-center lg:pt-1 lg:pb-0"
                     >
                       <Play className="mr-2 h-5 w-5" />
