@@ -94,7 +94,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ isOpen, onClose }) =
             />
           </div>
 
-          <div className="space-y-2">
+          {/* <div className="space-y-2">
             <Label htmlFor="organization" className="text-white">Organization *</Label>
             <Input
               id="organization"
@@ -118,7 +118,7 @@ export const WaitlistForm: React.FC<WaitlistFormProps> = ({ isOpen, onClose }) =
               required
               className="bg-[#292929] border-white/20 text-white placeholder-gray-400 min-h-[80px]"
             />
-          </div>
+          </div> */}
 
           <div className="space-y-2">
             <Label htmlFor="email" className="text-white">Email *</Label>
