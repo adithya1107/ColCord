@@ -615,6 +615,7 @@ export const Careers: React.FC = () => {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -631,6 +632,7 @@ export const Careers: React.FC = () => {
     setSelectedJob(job);
     setApplyOpen(true);
     setSubmitted(false);
+    setSubmitError(null);
   };
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement | HTMLSelectElement> = (e) => {
@@ -665,15 +667,37 @@ export const Careers: React.FC = () => {
       alert('API URL not configured');
       return;
     }
+    
+    // Basic form validation
+    if (!form.name.trim() || !form.email.trim() || !form.phone.trim() || !form.college.trim() || !form.branch || !form.year) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
+    // Phone validation (basic)
+    const phoneRegex = /^\+?\d[\d\s\-]{6,}$/;
+    if (!phoneRegex.test(form.phone)) {
+      alert('Please enter a valid phone number');
+      return;
+    }
+
     setSubmitting(true);
+    setSubmitError(null);
     try {
       const payload: Record<string, string> = {
         jobId: selectedJob.id,
         jobTitle: selectedJob.title,
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        college: form.college,
+        name: form.name.trim(),
+        email: form.email.trim().toLowerCase(),
+        phone: form.phone.trim(),
+        college: form.college.trim(),
         branch: form.branch,
         year: form.year,
         timestamp: new Date().toISOString(),
@@ -688,18 +712,22 @@ export const Careers: React.FC = () => {
         body: params.toString(),
       });
 
-      // Many Google Apps Script endpoints return 200 but may be opaque if CORS is misconfigured.
-      if (!res.ok && res.type !== 'opaque') {
-        throw new Error(`Network error: ${res.status}`);
+      // Handle response
+      if (res.ok) {
+        const responseData = await res.text();
+        console.log('Application submitted successfully:', responseData);
+        setSubmitted(true);
+        setForm({ name: '', email: '', phone: '+91', college: '', branch: '', year: '' });
+        setCollegeSearch('');
+        setShowCollegeDropdown(false);
+      } else {
+        throw new Error(`Network error: ${res.status} ${res.statusText}`);
       }
-
-      setSubmitted(true);
-      setForm({ name: '', email: '', phone: '+91', college: '', branch: '', year: '' });
-      setCollegeSearch('');
-      setShowCollegeDropdown(false);
     } catch (err) {
       console.error('Application submit error:', err);
-      alert('Submission failed. Please check browser console/network and ensure the Google Script is deployed for "Anyone, even anonymous" access.');
+      const errorMessage = 'Submission failed. Please try again later or contact us directly at team@colcord.co.in';
+      setSubmitError(errorMessage);
+      alert(errorMessage);
     } finally {
       setSubmitting(false);
     }

@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const G_SCRIPT = process.env.GOOGLE_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbykuTqrNMIMkY3FlMXGPZapdWGU0e1Rf5o9EYs9d_Yrr7izYDG_kR9TL1Im1UkKcbzxEA/exec';
+const G_SCRIPT = process.env.GOOGLE_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbxZsxo7Hgq0H1-96sJAW_kGxtnHVruWCVqXlvffNJ6dQjdrngnGtU5TQWcOIQ_rnW-Syw/exec';
 
 app.post('/apply', async (req, res) => {
   try {
