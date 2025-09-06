@@ -1,15 +1,110 @@
-import React, { useEffect } from 'react';
-import { Mail, MessageSquare, Users, Calendar } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Mail, MessageSquare, Users, Calendar, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 export const Contact = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Form submission logic would go here
-  };
-  useEffect
-  (() => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    university: '',
+    subject: '',
+    message: ''
+  });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  // Replace this URL with your actual Google Apps Script Web App URL
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzE-QCrE477MbPRC7YbqrisG5VLbdi6clQ9jQVhK6Ajoyf1R9FFUDYCxpVNCkmplwYLfg/exec';
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const resetForm = () => {
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      university: '',
+      subject: '',
+      message: ''
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
+      setSubmitStatus('error');
+      setSubmitMessage('Please fill in all required fields (First Name, Last Name, Email, and Message).');
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setSubmitStatus('error');
+      setSubmitMessage('Please enter a valid email address.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+        mode: 'no-cors' // Required for Google Apps Script
+      });
+
+      // Since we're using no-cors mode, we can't read the response
+      // So we assume success if no error was thrown
+      setSubmitStatus('success');
+      setSubmitMessage('Thank you for your message! We\'ll get back to you soon.');
+      resetForm();
+      
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+      setSubmitMessage('There was an error submitting your message. Please try again or email us directly at team@colcord.co.in');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const StatusMessage = () => {
+    if (!submitStatus) return null;
+
+    return (
+      <div className={`flex items-center space-x-3 p-4 rounded-lg mb-6 ${
+        submitStatus === 'success' 
+          ? 'bg-green-900/20 border border-green-500/30 text-green-400' 
+          : 'bg-red-900/20 border border-red-500/30 text-red-400'
+      }`}>
+        {submitStatus === 'success' ? (
+          <CheckCircle className="h-5 w-5 flex-shrink-0" />
+        ) : (
+          <AlertCircle className="h-5 w-5 flex-shrink-0" />
+        )}
+        <p className="font-body text-sm">{submitMessage}</p>
+      </div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-palette-black font-body">
@@ -32,25 +127,38 @@ export const Contact = () => {
           <div className="max-w-2xl mx-auto">
             <div className="bg-white/5 border border-white/10 p-8 lg:p-12">
               <h2 className="font-heading text-2xl font-semibold text-palette-white mb-8 text-center">Send us a Message</h2>
+              
+              <StatusMessage />
+              
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-palette-white mb-2 font-body">
-                      First Name
+                      First Name *
                     </label>
                     <input
                       type="text"
-                      className="w-full px-4 py-3 bg-palette-black border border-white/20 focus:outline-none focus:border-white/40 text-palette-white placeholder-white/40 transition-colors font-body"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      required
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 bg-palette-black border border-white/20 focus:outline-none focus:border-white/40 text-palette-white placeholder-white/40 transition-colors font-body disabled:opacity-50"
                       placeholder="Your first name"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-palette-white mb-2 font-body">
-                      Last Name
+                      Last Name *
                     </label>
                     <input
                       type="text"
-                      className="w-full px-4 py-3 bg-palette-black border border-white/20 focus:outline-none focus:border-white/40 text-palette-white placeholder-white/40 transition-colors font-body"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      required
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 bg-palette-black border border-white/20 focus:outline-none focus:border-white/40 text-palette-white placeholder-white/40 transition-colors font-body disabled:opacity-50"
                       placeholder="Your last name"
                     />
                   </div>
@@ -58,11 +166,16 @@ export const Contact = () => {
                 
                 <div>
                   <label className="block text-sm font-medium text-palette-white mb-2 font-body">
-                    Email Address
+                    Email Address *
                   </label>
                   <input
                     type="email"
-                    className="w-full px-4 py-3 bg-palette-black border border-white/20 focus:outline-none focus:border-white/40 text-palette-white placeholder-white/40 transition-colors font-body"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-palette-black border border-white/20 focus:outline-none focus:border-white/40 text-palette-white placeholder-white/40 transition-colors font-body disabled:opacity-50"
                     placeholder="your.email@university.edu"
                   />
                 </div>
@@ -73,7 +186,11 @@ export const Contact = () => {
                   </label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 bg-palette-black border border-white/20 focus:outline-none focus:border-white/40 text-palette-white placeholder-white/40 transition-colors font-body"
+                    name="university"
+                    value={formData.university}
+                    onChange={handleInputChange}
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-palette-black border border-white/20 focus:outline-none focus:border-white/40 text-palette-white placeholder-white/40 transition-colors font-body disabled:opacity-50"
                     placeholder="Your university or organization"
                   />
                 </div>
@@ -82,7 +199,13 @@ export const Contact = () => {
                   <label className="block text-sm font-medium text-palette-white mb-2 font-body">
                     Subject
                   </label>
-                  <select className="w-full px-4 py-3 bg-palette-black border border-white/20 focus:outline-none focus:border-white/40 text-palette-white font-body">
+                  <select 
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-palette-black border border-white/20 focus:outline-none focus:border-white/40 text-palette-white font-body disabled:opacity-50"
+                  >
                     <option value="">Select a subject</option>
                     <option value="general">General Inquiry</option>
                     <option value="partnership">University Partnership</option>
@@ -94,20 +217,33 @@ export const Contact = () => {
                 
                 <div>
                   <label className="block text-sm font-medium text-palette-white mb-2 font-body">
-                    Message
+                    Message *
                   </label>
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
                     rows={6}
-                    className="w-full px-4 py-3 bg-palette-black border border-white/20 focus:outline-none focus:border-white/40 text-palette-white placeholder-white/40 transition-colors font-body resize-none"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-palette-black border border-white/20 focus:outline-none focus:border-white/40 text-palette-white placeholder-white/40 transition-colors font-body resize-none disabled:opacity-50"
                     placeholder="Tell us more about your inquiry..."
                   ></textarea>
                 </div>
                 
                 <button
                   onClick={handleSubmit}
-                  className="w-full bg-palette-white text-palette-black px-8 py-3 font-medium hover:bg-white/90 transition-colors duration-300 font-body"
+                  disabled={isSubmitting}
+                  className="w-full bg-palette-white text-palette-black px-8 py-3 font-medium hover:bg-white/90 transition-colors duration-300 font-body disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                 >
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <span>Send Message</span>
+                  )}
                 </button>
               </div>
             </div>
