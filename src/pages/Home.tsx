@@ -328,7 +328,7 @@ export const Home = () => {
               <div>
                 <h3 className="font-heading text-2xl font-semibold text-palette-white mb-6">Our Solution</h3>
                 <p className="font-body text-white/60 mb-8 leading-relaxed font-light text-lg">
-                  Colcord eliminates fragmentation by creating a unified ecosystem where every 
+                  ColCord eliminates fragmentation by creating a unified ecosystem where every 
                   university function operates seamlessly within a single, intuitive platform.
                 </p>
                 <div className="flex items-center space-x-3">

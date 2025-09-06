@@ -20,7 +20,7 @@ export const Contact = () => {
             Get in <span className="font-bold">Touch</span>
           </h1>
           <p className="font-body text-xl text-white/60 max-w-3xl mx-auto font-light">
-            Have questions about Colcord? Want to learn more about our vision or discuss partnership opportunities? 
+            Have questions about ColCord? Want to learn more about our vision or discuss partnership opportunities? 
             We'd love to hear from you.
           </p>
         </div>
@@ -123,13 +123,13 @@ export const Contact = () => {
               Frequently Asked <span className="font-bold">Questions</span>
             </h2>
             <p className="font-body text-xl text-white/60 max-w-2xl mx-auto font-light">
-              Common questions about Colcord and our development process.
+              Common questions about ColCord and our development process.
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto space-y-6">
             <div className="bg-palette-black border border-white/10 p-8">
-              <h3 className="font-heading text-lg font-semibold text-palette-white mb-3">When will Colcord be available?</h3>
+              <h3 className="font-heading text-lg font-semibold text-palette-white mb-3">When will ColCord be available?</h3>
               <p className="font-body text-white/60 font-light">
                 We're currently in active development. Join our waitlist to be notified when we launch our beta program and get early access opportunities.
               </p>
@@ -138,14 +138,14 @@ export const Contact = () => {
             <div className="bg-palette-black border border-white/10 p-8">
               <h3 className="font-heading text-lg font-semibold text-palette-white mb-3">How can universities get involved?</h3>
               <p className="font-body text-white/60 font-light">
-                We're actively seeking university partners to help shape Colcord's development. Contact us at team@colcord.co.in to discuss collaboration opportunities.
+                We're actively seeking university partners to help shape ColCord's development. Contact us at team@colcord.co.in to discuss collaboration opportunities.
               </p>
             </div>
             
             <div className="bg-palette-black border border-white/10 p-8">
-              <h3 className="font-heading text-lg font-semibold text-palette-white mb-3">Will Colcord integrate with existing university systems?</h3>
+              <h3 className="font-heading text-lg font-semibold text-palette-white mb-3">Will ColCord integrate with existing university systems?</h3>
               <p className="font-body text-white/60 font-light">
-                Yes, Colcord is being designed with integration capabilities to work alongside existing university systems while gradually providing a unified alternative.
+                Yes, ColCord is being designed with integration capabilities to work alongside existing university systems while gradually providing a unified alternative.
               </p>
             </div>
             

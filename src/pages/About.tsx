@@ -195,7 +195,7 @@ export const About = () => {
                 </h1>
                 
                 <p className="font-body text-xl text-white/60 mb-8 leading-relaxed font-light">
-                  Colcord addresses the fundamental challenge of fragmented university 
+                  ColCord addresses the fundamental challenge of fragmented university 
                   systems by creating a unified ecosystem that transforms how educational 
                   institutions connect and serve their communities.
                 </p>
@@ -282,7 +282,7 @@ export const About = () => {
                 Core <span className="font-bold">Values</span>
               </h2>
               <p className="font-body text-xl text-white/60 max-w-2xl mx-auto font-light">
-                The principles guiding our development of Colcord and commitment to the university community.
+                The principles guiding our development of ColCord and commitment to the university community.
               </p>
             </div>
 
@@ -401,7 +401,7 @@ export const About = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="font-heading text-4xl lg:text-6xl font-light text-palette-white mb-6">
-                Why <span className="font-bold">Colcord</span>
+                Why <span className="font-bold">ColCord</span>
               </h2>
               <p className="font-body text-xl text-white/60 max-w-2xl mx-auto font-light">
                 Understanding the challenges that led us to envision a better solution.
@@ -452,7 +452,7 @@ export const About = () => {
             </h2>
             <p className="font-body text-xl text-white/60 mb-12 max-w-2xl mx-auto font-light">
               Be part of creating the platform that will transform university life. Your input will help 
-              shape Colcord's development and ensure it meets real community needs.
+              shape ColCord's development and ensure it meets real community needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
