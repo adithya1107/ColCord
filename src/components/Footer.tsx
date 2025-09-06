@@ -11,7 +11,7 @@ export const Footer = () => {
             <span className="text-sm text-white/60">team@colcord.co.in</span>
           </div>
           <p className="text-white/40 text-xs">
-            © 2025 Colcord. All rights reserved.
+            © 2025 ColCord. All rights reserved.
           </p>
         </div>
       </div>
