@@ -221,7 +221,7 @@ export const About = () => {
                       <span className="font-body text-sm font-medium text-white/60">Unified Ecosystem</span>
                     </div>
                   </div>
-                  <div className="absolute -bottom-4 -right-4 bg-palette-black border border-white/20 p-4">
+                  <div className="absolute -top-4 -right-4 bg-palette-black border border-white/20 p-4">
                     <div className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-palette-white rounded-full animate-pulse"></div>
                       <span className="font-body text-sm font-medium text-palette-white">In Development</span>
@@ -321,7 +321,7 @@ export const About = () => {
                       <img 
                         src={`${member.image}`} 
                         alt={`${member.name} profile`}
-                        className="w-full h-full object-cover border border-white/20 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(192,192,192,0.6)] group-hover:border-white/60"
+                        className="w-full h-full object-cover transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(192,192,192,0.6)]"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -347,7 +347,7 @@ export const About = () => {
                       <img 
                         src={`${member.image}`} 
                         alt={`${member.name} profile`}
-                        className="w-full h-full object-cover border border-white/20 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(192,192,192,0.6)] group-hover:border-white/60"
+                        className="w-full h-full object-cover transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(192,192,192,0.6)]"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -373,7 +373,7 @@ export const About = () => {
                       <img 
                         src={`${member.image}`} 
                         alt={`${member.name} profile`}
-                        className="w-full h-full object-cover border border-white/20 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(192,192,192,0.6)] group-hover:border-white/60"
+                        className="w-full h-full object-cover transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(192,192,192,0.6)]"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -410,7 +410,7 @@ export const About = () => {
 
             <div className="max-w-4xl mx-auto">
               <div className="space-y-8">
-                <div style={{ backgroundColor: '#000000' }} className="border border-white/10 p-8">
+                <div className="bg-white/5 border border-white/10 p-8">
                   <h3 className="font-heading text-xl font-semibold text-palette-white mb-3">The Challenge</h3>
                   <p className="font-body text-white/60 font-light">
                     Universities operate with dozens of disconnected systems. Students struggle with 
@@ -420,20 +420,20 @@ export const About = () => {
                   </p>
                 </div>
                 
-                <div style={{ backgroundColor: '#292929' }} className="border border-white/10 p-8">
+                <div className="bg-white/5 border border-white/10 p-8">
                   <h3 className="font-heading text-xl font-semibold text-palette-white mb-3">The Opportunity</h3>
                   <p className="font-body text-white/60 font-light">
                     We saw an opportunity to reimagine university technology from the ground up. Instead of 
                     adding another tool to the mix, we're building a comprehensive ecosystem that brings 
-                    everything together—from academic management to campus life, from career services to 
-                    alumni networking—in one intuitive, powerful platform.
+                    everything together from academic management to campus life, from career services to 
+                    alumni networking in one intuitive, powerful platform.
                   </p>
                 </div>
                 
-                <div style={{ backgroundColor: '#5f5f5f' }} className="border border-white/20 p-8">
+                <div className="bg-white/5 border border-white/10 p-8">
                   <h3 className="font-heading text-xl font-semibold text-palette-white mb-3">The Solution</h3>
-                  <p className="font-body text-white/80 font-light">
-                    Colcord is more than software—it's a unified ecosystem designed to strengthen 
+                  <p className="font-body text-white/60 font-light">
+                    Colcord is more than software it's a unified ecosystem designed to strengthen 
                     university communities. By connecting every stakeholder through one platform, we're 
                     creating the foundation for more engaged, efficient, and connected campus life that 
                     serves students, faculty, administrators, alumni, and parents alike.
@@ -454,7 +454,7 @@ export const About = () => {
               Be part of creating the platform that will transform university life. Your input will help 
               shape ColCord's development and ensure it meets real community needs.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <Button
                 onClick={() => setIsWaitlistOpen(true)}
                 variant="hero"
@@ -463,12 +463,6 @@ export const About = () => {
               >
                 Join Waitlist
               </Button>
-              <a 
-                href="mailto:team@colcord.co.in?subject=Contact Request&body=Hi, I would like to get in touch with the Colcord team."
-                className="border border-white/20 text-palette-white px-8 py-4 font-medium text-sm hover:bg-white/5 hover:border-white/40 transition-colors duration-300 inline-block md:pt-3 md:pb-4"
-              >
-                Contact Team
-              </a>
             </div>
           </div>
         </section>

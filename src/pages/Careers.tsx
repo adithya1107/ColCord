@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Briefcase, Search } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Briefcase } from 'lucide-react';
 
 type Job = {
   id: string;
@@ -613,11 +610,11 @@ export const Careers: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleApply = (job: Job) => {
+  const handleApply = (_job: Job) => {
     // Add job information as URL parameters to pre-fill the form if needed
     const url = new URL(GOOGLE_FORM_URL);
     // You can add parameters here if your Google Form supports pre-filling
-    // url.searchParams.set('entry.XXXXXX', job.title); // Replace XXXXXX with actual entry ID
+    // url.searchParams.set('entry.XXXXXX', _job.title); // Replace XXXXXX with actual entry ID
     
     // Open Google Form in new tab
     window.open(url.toString(), '_blank');
@@ -631,7 +628,7 @@ export const Careers: React.FC = () => {
             Careers at <span className="font-bold">ColCord</span>
           </h1>
           <p className="text-white/60 max-w-3xl mx-auto text-lg">
-            We're building the future of university tech. Explore internship roles below — if you see a fit, apply and join our mission.
+            We're building the future of university tech. Explore internship roles below if you see a fit, apply and join our mission.
           </p>
         </div>
       </section>
@@ -700,9 +697,9 @@ export const Careers: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-8">
                 <h2 className="font-heading text-2xl lg:text-4xl font-light text-palette-white">
-                  Perks & Benefits <span aria-hidden>🌟</span>
+                  Perks & Benefits
                 </h2>
-                <p className="text-white/60 max-w-2xl mx-auto mt-2">What we provide to support your growth and celebrate your impact.</p>
+                <p className="text-white/60 max-w-2xl mx-auto mt-2 font-body">What we provide to support your growth and celebrate your impact.</p>
               </div>
 
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -710,37 +707,37 @@ export const Careers: React.FC = () => {
                   {
                     title: 'Official Internship Certificate',
                     desc: 'A verified credential recognizing your contribution.',
-                    icon: '🎓',
+                    icon: '',
                   },
                   {
                     title: 'Experience & Completion Letter',
                     desc: 'Proof of hands-on industry experience.',
-                    icon: '📄',
+                    icon: '',
                   },
                   {
                     title: 'Letter of Recommendation',
                     desc: 'From professors/founders for outstanding performers.',
-                    icon: '📝',
+                    icon: '',
                   },
                   {
                     title: 'Project Showcase',
                     desc: 'Your work featured on live platforms, GitHub repos, and our official site.',
-                    icon: '🚀',
+                    icon: '',
                   },
                   {
                     title: 'Equity Participation (ESOP)',
                     desc: 'An opportunity to share in our growth journey.',
-                    icon: '💼',
+                    icon: '',
                   },
                   {
                     title: 'Professional Endorsements',
                     desc: 'Recognition on LinkedIn/GitHub to strengthen your profile.',
-                    icon: '👍',
+                    icon: '',
                   },
                   {
                     title: 'Innovation Centre Access',
                     desc: 'Exclusive chance to work at the Manipal Innovation Centre.',
-                    icon: '🏢',
+                    icon: '',
                   },
                 ].map((p) => (
                   <div
@@ -750,13 +747,13 @@ export const Careers: React.FC = () => {
                     aria-labelledby={`perk-${p.title.replace(/\s+/g, '-')}`}
                   >
                     <div className="flex-shrink-0 h-10 w-10 rounded-full bg-white/5 flex items-center justify-center text-xl" aria-hidden>
-                      {p.icon}
+                      {p.icon && <span>{p.icon}</span>}
                     </div>
                     <div>
-                      <h3 id={`perk-${p.title.replace(/\s+/g, '-')}`} className="text-white font-semibold text-sm">
+                      <h3 id={`perk-${p.title.replace(/\s+/g, '-')}`} className="text-white font-semibold text-sm font-heading">
                         {p.title}
                       </h3>
-                      <p className="text-white/60 text-sm mt-1 leading-snug">{p.desc}</p>
+                      <p className="text-white/60 text-sm mt-1 leading-snug font-body">{p.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -765,7 +762,7 @@ export const Careers: React.FC = () => {
           </section>
 
           <div className="mt-12 text-center">
-            <p className="text-white/60">Have general questions about careers or partnerships? Email us at <a className="text-white underline" href="mailto:team@colcord.co.in">team@colcord.co.in</a></p>
+            <p className="text-white/60 font-body">Have general questions about careers or partnerships? Email us at <a className="text-white underline" href="mailto:team@colcord.co.in">team@colcord.co.in</a></p>
           </div>
         </div>
       </section>

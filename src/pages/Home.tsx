@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { 
   ArrowRight, 
   Users, 
@@ -12,8 +12,6 @@ import {
   Building,
   UserCheck,
   Heart,
-  Zap,
-  Target,
   ChevronRight,
   Play
 } from 'lucide-react';
@@ -29,7 +27,7 @@ export const Home = () => {
     setIsVisible(true);
     window.scrollTo(0, 0);
     const interval = setInterval(() => {
-      setCurrentModule((prev) => (prev + 1) % 6);
+      setCurrentModule((prev: number) => (prev + 1) % 6);
     }, 4000);
     return () => clearInterval(interval);
   }, []);
@@ -122,23 +120,19 @@ export const Home = () => {
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-7">
-
                   <div className="inline-flex items-center px-4 py-2 bg-white/5 border border-white/10 text-sm font-medium text-white/80 mb-8">
                     <div className="w-2 h-2 bg-white rounded-full mr-3 animate-pulse"></div>
-                    In Development
+                    <span className="animate-pulse">In Development</span>
                   </div>
-                  
                   <h1 className="font-heading text-6xl lg:text-8xl font-light text-palette-white mb-8 leading-none tracking-tight">
                     One Platform.
                     <span className="block font-bold">One Ecosystem</span>
                   </h1>
-                  
                   <p className="font-body text-xl text-white/60 mb-12 max-w-2xl leading-relaxed font-light">
                     A comprehensive digital platform connecting students, faculty, administrators, 
                     alumni, and parents through seamless technology integration.
                   </p>
-                  
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mx-auto">
                     <Button
                       onClick={() => setIsWaitlistOpen(true)}
                       variant="hero"
@@ -189,8 +183,8 @@ export const Home = () => {
         <section className="py-20 lg:py-32 bg-palette-black border-t border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-20">
-              <h2 className="font-heading text-4xl lg:text-6xl font-light text-palette-white mb-6">
-                Platform <span className="font-bold">Modules</span>
+              <h2 className="font-heading text-4xl lg:text-6xl font-light text-palette-white mb-6 hover:text-white hover:scale-105 transform transition-all duration-300 cursor-pointer">
+                Platform <span className="font-bold hover:text-palette-white transition-colors duration-300">Modules</span>
               </h2>
               <p className="font-body text-xl text-white/60 max-w-3xl font-light">
                 Comprehensive functionality designed to address every aspect of university operations.
@@ -198,16 +192,16 @@ export const Home = () => {
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-              <div className="bg-white/5 border border-white/10 p-8 lg:p-12">
+              <div className="bg-white/5 border border-white/10 p-8 lg:p-12 hover:bg-white/10 hover:border-white/20 hover:scale-105 hover:shadow-lg hover:shadow-white/10 transition-all duration-300 cursor-pointer group">
                 <div className="flex items-start space-x-6">
-                  <div className="bg-white/10 p-4 border border-white/20">
+                  <div className="bg-white/10 p-4 border border-white/20 transition-all duration-300 group-hover:bg-white/20 group-hover:border-white/30 group-hover:scale-110">
                     {modules[currentModule].icon}
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-heading text-2xl font-semibold text-palette-white mb-4">{modules[currentModule].title}</h3>
-                    <p className="font-body text-white/60 mb-6 text-lg font-light">{modules[currentModule].description}</p>
-                    <div className="bg-white/5 p-4 border border-white/10">
-                      <p className="font-body text-sm text-white/80 font-light">
+                    <h3 className="font-heading text-2xl font-semibold text-palette-white mb-4 transition-colors duration-300 group-hover:text-white">{modules[currentModule].title}</h3>
+                    <p className="font-body text-white/60 mb-6 text-lg font-light transition-colors duration-300 group-hover:text-white/80">{modules[currentModule].description}</p>
+                    <div className="bg-white/5 p-4 border border-white/10 transition-all duration-300 group-hover:bg-white/10 group-hover:border-white/20">
+                      <p className="font-body text-sm text-white/80 font-light transition-colors duration-300 group-hover:text-white">
                         {modules[currentModule].scenario}
                       </p>
                     </div>
@@ -219,21 +213,21 @@ export const Home = () => {
                 {modules.map((module, index) => (
                   <div 
                     key={index} 
-                    className={`bg-white/5 border p-6 transition-all duration-300 cursor-pointer ${
+                    className={`bg-white/5 border p-6 transition-all duration-300 cursor-pointer hover:scale-105 hover:bg-white/10 hover:border-white/30 hover:shadow-lg hover:shadow-white/10 ${
                       index === currentModule 
-                        ? 'border-white/40 bg-white/10' 
+                        ? 'border-white/40 bg-white/10 scale-105 shadow-lg shadow-white/10' 
                         : 'border-white/10 hover:border-white/20'
                     }`}
                     onClick={() => setCurrentModule(index)}
                   >
                     <div className="flex items-center space-x-3 mb-3">
-                      <div className="bg-white/10 p-2 border border-white/20">
+                      <div className="bg-white/10 p-2 border border-white/20 transition-all duration-300 hover:bg-white/20 hover:border-white/30">
                         {module.icon}
                       </div>
                     </div>
-                    <h4 className="font-body text-sm font-medium text-palette-white mb-2">{module.title}</h4>
-                    <div className="flex items-center text-white/40">
-                      <ChevronRight className="h-3 w-3 mr-1" />
+                    <h4 className="font-body text-sm font-medium text-palette-white mb-2 transition-colors duration-300 hover:text-white">{module.title}</h4>
+                    <div className="flex items-center text-white/40 transition-all duration-300 hover:text-white/60">
+                      <ChevronRight className="h-3 w-3 mr-1 transition-transform duration-300 hover:translate-x-1" />
                       <span className="font-body text-xs">Explore</span>
                     </div>
                   </div>
@@ -257,16 +251,16 @@ export const Home = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {userSegments.slice(0, 3).map((segment, index) => (
-                <div key={index} className="bg-white/5 border border-white/10 p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
-                  <div className="bg-white/10 w-16 h-16 flex items-center justify-center mx-auto mb-6 border border-white/20">
+                <div key={index} className="bg-white/5 border border-white/10 p-8 hover:bg-white/10 hover:border-white/20 hover:scale-105 hover:shadow-lg hover:shadow-white/10 transition-all duration-300 group cursor-pointer">
+                  <div className="bg-white/10 w-16 h-16 flex items-center justify-center mx-auto mb-6 border border-white/20 transition-all duration-300 group-hover:bg-white/20 group-hover:border-white/30 group-hover:scale-110">
                     {segment.icon}
                   </div>
-                  <h3 className="font-heading text-xl font-semibold text-palette-white mb-4 text-center">{segment.title}</h3>
-                  <p className="font-body text-white/60 leading-relaxed mb-6 text-center font-light">{segment.description}</p>
+                  <h3 className="font-heading text-xl font-semibold text-palette-white mb-4 text-center transition-colors duration-300 group-hover:text-white">{segment.title}</h3>
+                  <p className="font-body text-white/60 leading-relaxed mb-6 text-center font-light transition-colors duration-300 group-hover:text-white/80">{segment.description}</p>
                   <div className="space-y-2">
                     {segment.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center text-sm text-white/60 font-body">
-                        <div className="w-1 h-1 bg-white/40 mr-3"></div>
+                      <div key={idx} className="flex items-center text-sm text-white/60 font-body transition-colors duration-300 group-hover:text-white/80">
+                        <div className="w-1.5 h-1.5 bg-white/40 mr-3 rounded-full transition-all duration-300 group-hover:bg-white/60 group-hover:scale-125"></div>
                         {feature}
                       </div>
                     ))}
@@ -277,16 +271,16 @@ export const Home = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 max-w-4xl mx-auto">
               {userSegments.slice(3).map((segment, index) => (
-                <div key={index} className="bg-white/5 border border-white/10 p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
-                  <div className="bg-white/10 w-16 h-16 flex items-center justify-center mx-auto mb-6 border border-white/20">
+                <div key={index} className="bg-white/5 border border-white/10 p-8 hover:bg-white/10 hover:border-white/20 hover:scale-105 hover:shadow-lg hover:shadow-white/10 transition-all duration-300 group cursor-pointer">
+                  <div className="bg-white/10 w-16 h-16 flex items-center justify-center mx-auto mb-6 border border-white/20 transition-all duration-300 group-hover:bg-white/20 group-hover:border-white/30 group-hover:scale-110">
                     {segment.icon}
                   </div>
-                  <h3 className="font-heading text-xl font-semibold text-palette-white mb-4 text-center">{segment.title}</h3>
-                  <p className="font-body text-white/60 leading-relaxed mb-6 text-center font-light">{segment.description}</p>
+                  <h3 className="font-heading text-xl font-semibold text-palette-white mb-4 text-center transition-colors duration-300 group-hover:text-white">{segment.title}</h3>
+                  <p className="font-body text-white/60 leading-relaxed mb-6 text-center font-light transition-colors duration-300 group-hover:text-white/80">{segment.description}</p>
                   <div className="space-y-2">
                     {segment.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center text-sm text-white/60 font-body">
-                        <div className="w-1 h-1 bg-white/40 mr-3"></div>
+                      <div key={idx} className="flex items-center text-sm text-white/60 font-body transition-colors duration-300 group-hover:text-white/80">
+                        <div className="w-1.5 h-1.5 bg-white/40 mr-3 rounded-full transition-all duration-300 group-hover:bg-white/60 group-hover:scale-125"></div>
                         {feature}
                       </div>
                     ))}
@@ -307,19 +301,19 @@ export const Home = () => {
                 </h2>
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-2 h-2 bg-palette-white mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-palette-white mt-2 flex-shrink-0 rounded-full"></div>
                     <p className="font-body text-white/60 font-light">Multiple disconnected systems creating operational inefficiencies</p>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-2 h-2 bg-palette-white mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-palette-white mt-2 flex-shrink-0 rounded-full"></div>
                     <p className="font-body text-white/60 font-light">Students managing dozens of platforms for basic university functions</p>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-2 h-2 bg-palette-white mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-palette-white mt-2 flex-shrink-0 rounded-full"></div>
                     <p className="font-body text-white/60 font-light">Faculty overwhelmed by administrative complexity</p>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-2 h-2 bg-palette-white mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-palette-white mt-2 flex-shrink-0 rounded-full"></div>
                     <p className="font-body text-white/60 font-light">Administrators lacking unified institutional insights</p>
                   </div>
                 </div>
@@ -331,8 +325,8 @@ export const Home = () => {
                   ColCord eliminates fragmentation by creating a unified ecosystem where every 
                   university function operates seamlessly within a single, intuitive platform.
                 </p>
-                <div className="flex items-center space-x-3">
-                  <Target className="h-6 w-6 text-palette-white" />
+                <div className="flex items-start space-x-4">
+                  <div className="w-2 h-2 bg-palette-white mt-2 flex-shrink-0 rounded-full"></div>
                   <span className="font-body text-palette-white font-medium">One platform, infinite possibilities</span>
                 </div>
               </div>
