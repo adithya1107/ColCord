@@ -111,18 +111,19 @@ export const Home = () => {
         <section className="relative bg-palette-black py-20 lg:py-32 overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
-            <div className="absolute top-1/4 left-1/4 w-px h-32 bg-white/10"></div>
-            <div className="absolute top-1/3 right-1/3 w-32 h-px bg-white/10"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-px h-24 bg-white/10"></div>
           </div>
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div className="lg:col-span-7">
-                  <div className="inline-flex items-center px-4 py-2 bg-white/5 border border-white/10 text-sm font-medium text-white/80 mb-8">
-                    <div className="w-2 h-2 bg-white rounded-full mr-3 animate-pulse"></div>
-                    <span className="animate-pulse">In Development</span>
+                  <div className="inline-flex items-center px-4 py-2 bg-white/5 border border-white/10 text-sm font-medium text-white/80 mb-8 animate-pulse" style={{animationDuration: '0.8s'}}>
+                    <div className="relative mr-3">
+                      <div className="w-2 h-2 bg-white rounded-full animate-ping" style={{animationDuration: '0.5s'}}></div>
+                      <div className="absolute top-0 left-0 w-2 h-2 bg-white rounded-full animate-pulse" style={{animationDuration: '0.3s'}}></div>
+                      <div className="absolute -top-0.5 -left-0.5 w-3 h-3 border border-white/60 rounded-full animate-ping" style={{animationDuration: '1.2s'}}></div>
+                    </div>
+                    <span className="animate-pulse tracking-wide" style={{animationDuration: '0.6s'}}>IN DEVELOPMENT</span>
                   </div>
                   <h1 className="font-heading text-6xl lg:text-8xl font-light text-palette-white mb-8 leading-none tracking-tight">
                     One Platform.
@@ -132,21 +133,21 @@ export const Home = () => {
                     A comprehensive digital platform connecting students, faculty, administrators, 
                     alumni, and parents through seamless technology integration.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mx-auto">
+                  <div className="flex flex-col sm:flex-row gap-4 justify-start items-start">
                     <Button
                       onClick={() => setIsWaitlistOpen(true)}
                       variant="hero"
                       size="lg"
-                      className="px-8 py-4 font-medium bg-palette-white text-palette-black hover:bg-white/90 transition-all duration-300 flex items-center justify-center group rounded-none"
+                      className="px-8 py-4 font-medium text-base bg-palette-white text-palette-black hover:bg-white/90 transition-all duration-300 flex items-center justify-center group rounded-none h-14"
                     >
                       Join Waitlist
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </Button>
                     <a 
                       href="https://colcorddemo.vercel.app" target='_blank' rel='noreferrer'
-                      className="border border-white/20 text-palette-white px-8 py-4 text-sm font-medium hover:bg-white/5 transition-all duration-300 flex items-center justify-center lg:pt-1 lg:pb-0"
+                      className="border border-white/20 text-palette-white px-8 py-4 text-base font-medium hover:bg-white/5 transition-all duration-300 flex items-center justify-center rounded-none h-14 group"
                     >
-                      <Play className="mr-2 h-5 w-5" />
+                      <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                       Request Demo
                     </a>
                   </div>

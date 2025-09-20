@@ -54,21 +54,21 @@ export const About = () => {
     {
       name: 'Tanishq',
       role: 'Technical Lead',
-      image: '/tanishq.png',
+      image: '/tanishq.jpeg',
       linkedin: 'https://www.linkedin.com/in/tanishq-kochar/',
       description: 'Focused on creating user-friendly interfaces and experiences that empower students and faculty in their academic journeys.'
     },
     {
       name: 'Jeevith',
       role: 'Technical Lead',
-      image: '/jeevith.png',
+      image: '/jeevith.jpeg',
       linkedin: 'https://www.linkedin.com/in/jeevith-gangadhara-782b21311/',
       description: 'Bringing a vision for integrated university systems that enhance collaboration and streamline campus life.'
     },
     {
       name: 'Shreya',
       role: 'CMO',
-      image: '/shreya.png',
+      image: '/shreya.jpeg',
       linkedin: 'https://www.linkedin.com/in/shreya-joshi-b4113b245/',
       description: 'Crafting compelling narratives and strategies to connect Colcord with university communities and drive engagement.'
     }
@@ -221,7 +221,7 @@ export const About = () => {
                       <span className="font-body text-sm font-medium text-white/60">Unified Ecosystem</span>
                     </div>
                   </div>
-                  <div className="absolute -top-4 -right-4 bg-palette-black border border-white/20 p-4">
+                  <div className="absolute -top-12 -right-4 bg-palette-black border border-white/20 p-4">
                     <div className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-palette-white rounded-full animate-pulse"></div>
                       <span className="font-body text-sm font-medium text-palette-white">In Development</span>
