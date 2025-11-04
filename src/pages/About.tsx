@@ -52,13 +52,6 @@ export const About = () => {
       description: 'Leading technical architecture and development to build scalable, innovative solutions for the future of university technology.'
     },
     {
-      name: 'Tanishq',
-      role: 'Technical Lead',
-      image: '/tanishq.jpeg',
-      linkedin: 'https://www.linkedin.com/in/tanishq-kochar/',
-      description: 'Focused on creating user-friendly interfaces and experiences that empower students and faculty in their academic journeys.'
-    },
-    {
       name: 'Jeevith',
       role: 'Technical Lead',
       image: '/jeevith.jpeg',
