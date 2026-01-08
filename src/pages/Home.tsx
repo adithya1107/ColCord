@@ -143,13 +143,13 @@ export const Home = () => {
                       Join Waitlist
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </Button>
-                    <a 
+                    {/* <a 
                       href="https://colcorddemo.vercel.app" target='_blank' rel='noreferrer'
                       className="border border-white/20 text-palette-white px-8 py-4 text-base font-medium hover:bg-white/5 transition-all duration-300 flex items-center justify-center rounded-none h-14 group"
                     >
                       <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                       Request Demo
-                    </a>
+                    </a> */}
                   </div>
                 </div>
                 

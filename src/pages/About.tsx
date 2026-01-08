@@ -52,13 +52,6 @@ export const About = () => {
       description: 'Leading technical architecture and development to build scalable, innovative solutions for the future of university technology.'
     },
     {
-      name: 'Jeevith',
-      role: 'Technical Lead',
-      image: '/jeevith.jpeg',
-      linkedin: 'https://www.linkedin.com/in/jeevith-gangadhara-782b21311/',
-      description: 'Bringing a vision for integrated university systems that enhance collaboration and streamline campus life.'
-    },
-    {
       name: 'Shreya',
       role: 'CMO',
       image: '/shreya.jpeg',
